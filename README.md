@@ -19,16 +19,14 @@
 Определите функцию, возвращающую последний элемент списка.
 
 ```lisp
-;gnu clisp 2.49
+(defun posl (lst); функция posl
+(cond 
+((null (cdr lst)) (car lst)) ;проверяем пустой ли у списка хвост
+(t (posl (cdr lst))) ;вызываем функцию posl(рекурсия)
+) 
+) 
 
-(set 'lst '(1 2 3))
-
-
-(defun posl (lst)
-    
-(cond ((null lst) (print nil)) ;проверка на пустой список 
-((null(cdr lst)) (print (car lst))) ;проверка на одноэлементный список
-(t (posl (cdr lst)))
-)
-)
+(print (posl '(1 2 3 4 5)))
+(print (posl '(a b c)))
+(print (posl '(a b (a c))))
 ```
