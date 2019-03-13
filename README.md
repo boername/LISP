@@ -1,7 +1,7 @@
 # LISP
 Все лабы по LISP здесь!
 
-
+```lisp
 ;gnu clisp 2.49
 
 
@@ -10,12 +10,12 @@
 (print (cadadr'((1) (2 goal) (3 (4))) ))
 
 (print  (caddr (cadar (cdar '((1 (2 (3 4 goal))))))))
+```
 
 
 
 
-
-
+```lisp
 ;gnu clisp 2.49
 
 (set 'lst '(1 2 3))
@@ -28,3 +28,4 @@
 (t (posl (cdr lst)))
 )
 )
+```
