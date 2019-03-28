@@ -43,3 +43,17 @@
     ;(A (B B C) (B B C) C F C) 
     ;(print (zamen '(1 1 1 1 1 1 4 5 67 7 7)))
     ;(1 1 1 4 5 67 7)
+
+
+;Задача 15 Определите функцию, вычисляющую скалярное произведение векторов, заданных списками целых чисел  
+
+(defun cross-prod (vect1 vect2)
+   (if (or (null vect1)(null vect2)) 0   
+   (+ (* (car vect1) (car vect2)) ( cross-prod(cdr vect1) (cdr vect2)))
+   )
+)
+
+;(print(cross-prod '(1 2 3) '(4 5 7)))
+;35
+
+
