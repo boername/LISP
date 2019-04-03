@@ -60,14 +60,14 @@
 ;27. Определите функцию, которая, чередуя элементы списков (a b...) и (1 2...), 
 ;образует новый список (a 1 b 2 ...). 
 
-(defun alternation (ls1 ls2) 
+(defun alternation (lst1 lst2) 
     (cond 
-    ((null ls1) nil) 
-    ((null ls2) nil) 
+    ((null lst1) nil) 
+    ((null lst2) nil) 
     (t 
     (cons 
-    (car ls1) 
-    (cons (car ls2) (alternation (cdr ls1) (cdr ls2)))
+    (car lst1) 
+    (cons (car lst2) (alternation (cdr lst1) (cdr lst2)))
  )))) 
 
     ;(print ( alternation '(B C) '(12 15))) 
