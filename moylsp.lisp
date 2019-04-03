@@ -57,3 +57,24 @@
 ;35
 
 
+;27. Определите функцию, которая, чередуя элементы списков (a b...) и (1 2...), 
+;образует новый список (a 1 b 2 ...). 
+
+(defun alternation (ls1 ls2) 
+    (cond 
+    ((null ls1) nil) 
+    ((null ls2) nil) 
+    (t 
+    (cons 
+    (car ls1) 
+    (cons (car ls2) (alternation (cdr ls1) (cdr ls2)))
+ )))) 
+
+    ;(print ( alternation '(B C) '(12 15))) 
+    ;(B 12 C 15) 
+
+    ;(print ( alternation '(Q W E R T Y) '(1 2 3 4 5 6))) 
+    ;(Q 1 W 2 E 3 R 4 T 5 Y 6)
+
+    ;(print ( alternation '() '()))
+    ;NIL
