@@ -57,7 +57,7 @@
 ;35
 
 
-;27. Определите функцию, которая, чередуя элементы списков (a b...) и (1 2...), 
+;Задача 27. Определите функцию, которая, чередуя элементы списков (a b...) и (1 2...), 
 ;образует новый список (a 1 b 2 ...). 
 
 (defun alternation (lst1 lst2) 
@@ -78,3 +78,28 @@
 
     ;(print ( alternation '() '()))
     ;NIL
+
+
+;Задача 48.Напишите предикат (ИМЕЕТ-СВОЙСТВО символ свойство), который проверяет, обладает ли символ данным свойством.
+
+  (defun ИМЕЕТ-СВОЙСТВО(x property) 
+  (Поиск-свойства property (symbol-plist x)) 
+  ) 
+
+    (defun Поиск-свойства(property list) 
+    (cond 
+    ((null list) nil) 
+    ((equal property (car list)) T) 
+    (t (Поиск-свойства property (cddr list))) 
+  )) 
+
+  (setf ( get 'car 'color) 'black ) 
+  (setf ( get 'car 'maxspeed) '180 ) 
+  (setf ( get 'car 'mark ) 'toyota ) 
+
+(print(ИМЕЕТ-СВОЙСТВО 'car 'color))
+;T 
+(print(ИМЕЕТ-СВОЙСТВО 'car 'maxspeed))
+;T 
+(print(ИМЕЕТ-СВОЙСТВО 'car 'country))
+;NIL
