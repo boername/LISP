@@ -103,3 +103,30 @@
 ;T 
 (print(ИМЕЕТ-СВОЙСТВО 'car 'country))
 ;NIL
+
+
+;Задача 47: Определите функцию УДАЛИТЬ-ВСЕ-СВОЙСТВА, которая удаляет все свойства символа. 
+
+(defun УДАЛИТЬ-ВСЕ-СВОЙСТВА (ОБЪЕКТ) 
+((lambda (СПИСОК-СВОЙСТВ) 
+(cond 
+((null СПИСОК-СВОЙСТВ) nil) 
+(t (remprop ОБЪЕКТ (car СПИСОК-СВОЙСТВ)) (УДАЛИТЬ-ВСЕ-СВОЙСТВА ОБЪЕКТ)) 
+)) (symbol-plist ОБЪЕКТ) 
+) 
+) 
+
+
+(setq ОБЪЕКТ 'NAME1) 
+(setf (get 'NAME1 'name) 'Vova) 
+(setf (get 'NAME1 'weight) '62) 
+(setf (get 'NAME1 'hair) 'black) 
+(setf (get 'NAME1 'hobby) 'basketball)
+
+
+(print (symbol-plist 'NAME1))
+;(BEHAVIOR PLAYFUL COLOR BLACK-AND-WHITE SIZE BIG NAME VASILIY) 
+
+;(УДАЛИТЬ-ВСЕ-СВОЙСТВА 'NAME1) 
+;(print (symbol-plist 'NAME1))
+;NIL
