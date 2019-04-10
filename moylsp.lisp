@@ -108,25 +108,54 @@
 ;Задача 47: Определите функцию УДАЛИТЬ-ВСЕ-СВОЙСТВА, которая удаляет все свойства символа. 
 
 (defun УДАЛИТЬ-ВСЕ-СВОЙСТВА (ОБЪЕКТ) 
-((lambda (СПИСОК-СВОЙСТВ) 
-(cond 
-((null СПИСОК-СВОЙСТВ) nil) 
-(t (remprop ОБЪЕКТ (car СПИСОК-СВОЙСТВ)) (УДАЛИТЬ-ВСЕ-СВОЙСТВА ОБЪЕКТ)) 
-)) (symbol-plist ОБЪЕКТ) 
+  ((lambda (СПИСОК-СВОЙСТВ) 
+    (cond 
+    ((null СПИСОК-СВОЙСТВ) nil) 
+    (t (remprop ОБЪЕКТ (car СПИСОК-СВОЙСТВ)) (УДАЛИТЬ-ВСЕ-СВОЙСТВА ОБЪЕКТ)) 
+    )) (symbol-plist ОБЪЕКТ) 
+  ) 
 ) 
-) 
 
 
-(setq ОБЪЕКТ 'NAME1) 
-(setf (get 'NAME1 'name) 'Vova) 
-(setf (get 'NAME1 'weight) '62) 
-(setf (get 'NAME1 'hair) 'black) 
-(setf (get 'NAME1 'hobby) 'basketball)
+    (setq ОБЪЕКТ 'NAME1) 
+    (setf (get 'NAME1 'name) 'Vova) 
+    (setf (get 'NAME1 'weight) '62) 
+    (setf (get 'NAME1 'hair) 'black) 
+    (setf (get 'NAME1 'hobby) 'basketball)
 
 
-(print (symbol-plist 'NAME1))
-;(BEHAVIOR PLAYFUL COLOR BLACK-AND-WHITE SIZE BIG NAME VASILIY) 
+    (print (symbol-plist 'NAME1))
+    ; 
 
-;(УДАЛИТЬ-ВСЕ-СВОЙСТВА 'NAME1) 
-;(print (symbol-plist 'NAME1))
+    ;(УДАЛИТЬ-ВСЕ-СВОЙСТВА 'NAME1) 
+    ;(print (symbol-plist 'NAME1))
+    ;NIL
+
+
+;Задача 38. Определите функцию ОБЪЕДИНЕНИЕ, формирующую объединение двух множеств.
+
+(defun in-predicate (a l)
+    (cond
+        ((null l) nil) ; элемент не может принадлежать пустому множеству
+        ((eq a (car l)) t) ; элемент принадлежит множеству, если в нем содержится
+        (t (in-predicate a (cdr l))) ; продолжаем проверку
+    )
+)
+
+(defun union~ (a b)
+    (cond ((null a) b)  
+        ((null b) a)
+        ((in-predicate (car a) b) (union~ (cdr a) b)) ;проверям принадлежит ли a к b, если нет, то идём дальше
+        (t (cons (car a) (union~ (cdr a) b)))
+    )
+)
+
+
+(print (union~ '(a b c) '(b c d)))
+;(A B C D)
+
+(print (union~ '(1 2 3 4 5) '(1 2 3 4 12 13 11)))
+;(5 1 2 3 4 12 13 11)
+
+(print (union~ '() '()))
 ;NIL
