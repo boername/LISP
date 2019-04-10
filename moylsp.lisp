@@ -125,7 +125,7 @@
 
 
     (print (symbol-plist 'NAME1))
-    ; 
+    ;(HOBBY BASKETBALL HAIR BLACK WEIGHT 62 NAME VOVA) 
 
     ;(УДАЛИТЬ-ВСЕ-СВОЙСТВА 'NAME1) 
     ;(print (symbol-plist 'NAME1))
