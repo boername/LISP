@@ -62,13 +62,13 @@
 
 (defun alternation (lst1 lst2) 
     (cond 
-    ((null lst1) nil) 
-    ((null lst2) nil) 
-    (t 
-    (cons 
-    (car lst1) 
-    (cons (car lst2) (alternation (cdr lst1) (cdr lst2)))
- )))) 
+     ((null lst1) nil) 
+     ((null lst2) nil) 
+      (t 
+        (cons (car lst1)
+              (cons (car lst2) (alternation (cdr lst1) (cdr lst2))
+        )
+)))) 
 
     ;(print ( alternation '(B C) '(12 15))) 
     ;(B 12 C 15) 
@@ -87,11 +87,14 @@
   ) 
 
     (defun Поиск-свойства(property list) 
-    (cond 
-    ((null list) nil) 
-    ((equal property (car list)) T) 
-    (t (Поиск-свойства property (cddr list))) 
-  )) 
+      (cond 
+        ((null list) nil) 
+        ((equal property (car list)) T) 
+         (t
+           (Поиск-свойства property (cddr list))) 
+  )
+    ) 
+
 
   (setf ( get 'car 'color) 'black ) 
   (setf ( get 'car 'maxspeed) '180 ) 
