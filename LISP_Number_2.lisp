@@ -41,3 +41,29 @@
 ;(1 2 3 2 3)
 
 
+
+;Задача 8. Напишите генератор натуральных чисел: 0, 1, 2, 3, 4, 5, ...
+
+(defun generateNAT ()
+	(let
+		((x -1))
+		(lambda ()(setq x (+ x 1)))
+	)
+)
+
+(setq gen (generateNAT))
+
+(print(funcall gen))
+(print(funcall gen))
+(print(funcall gen))
+(print(funcall gen))
+(print(funcall gen))
+(print(funcall gen))
+
+;0 
+;1 
+;2 
+;3 
+;4 
+;5 
+
