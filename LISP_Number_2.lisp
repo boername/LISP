@@ -51,14 +51,14 @@
 	)
 )
 
-(setq gen (generateNAT))
+(setq number (generateNAT))
 
-(print(funcall gen))
-(print(funcall gen))
-(print(funcall gen))
-(print(funcall gen))
-(print(funcall gen))
-(print(funcall gen))
+(print(funcall number))
+(print(funcall number))
+(print(funcall number))
+(print(funcall number))
+(print(funcall number))
+(print(funcall number))
 
 ;0 
 ;1 
