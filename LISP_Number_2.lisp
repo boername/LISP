@@ -17,22 +17,21 @@
 ;являющейся функциональным аргументом предикат пред истинен для всех элементов списка список.
 
 (defun КАЖДЫЙ (predicate list)
-    (cond
-        ((null list) nil)
-            (t
-                (mapcan (lambda (x)  
-                            (if (funcall predicate x)T NIL)
-                        ) list
-                )
-            )
+    (null
+         (mapcan (lambda (x)  
+                   (if (funcall predicate x)NIL (list T))
+                 ) list
+         )
     )
 )
 
-(print(КАЖДЫЙ (lambda (x) (> x 0)) '(1 2 3)))
+
+(print(КАЖДЫЙ (lambda (x) (> x 0)) '(-1 -2 -3 1 2 3)))
 ;T
 
-(print (КАЖДЫЙ 'evenp '(1 2 3 4 5 6 7)))
-;NIL
+(print(КАЖДЫЙ (lambda (x) (>= x 0)) '(0 1 2 3)))
+;T
+
 
 
 ;Задача 6. Определите фильтр (УДАЛитЬ-ЕСЛИ пред список), удаляющий из списка список
