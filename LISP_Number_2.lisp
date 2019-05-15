@@ -17,15 +17,22 @@
 ;являющейся функциональным аргументом предикат пред истинен для всех элементов списка список.
 
 (defun КАЖДЫЙ (predicate list)
-	(cond 
-		((null list) t)
-		((null (funcall predicate (car list))) nil)
-		(t (КАЖДЫЙ predicate (cdr list)))
-	)
+    (cond
+        ((null list) nil)
+            (t
+                (mapcan (lambda (x)  
+                            (if (funcall predicate x)T NIL)
+                        ) list
+                )
+            )
+    )
 )
 
 (print(КАЖДЫЙ (lambda (x) (> x 0)) '(-3 -2 -1 0 1 2 3)))
-; T
+;T
+
+(print (КАЖДЫЙ 'evenp '(2 4 6 7)))
+;NIL
 
 
 
